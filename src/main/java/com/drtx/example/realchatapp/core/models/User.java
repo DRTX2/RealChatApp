@@ -4,15 +4,16 @@ import java.time.Instant;
 import java.util.List;
 
 public class User {
-    String username;
-    String password;
-    String email;
-    String avatar;
-    String description;
-    OnlineStatus onlineStatus;
-    Instant lastSeen;
-    Instant createdAt;
-    List<Message> messages;
+    private Long id;
+    private String username;
+    private String password;
+    private String email;
+    private String avatar;
+    private String description;
+    private OnlineStatus onlineStatus;
+    private Instant lastSeen;
+    private Instant createdAt;
+    private List<Message> messages;
 
     public User(String username, String password, String email, String avatar, String description, OnlineStatus onlineStatus, Instant lastSeen, Instant createdAt, List<Message> messages) {
         this.username = username;
