@@ -6,6 +6,7 @@ import com.drtx.example.realchatapp.adapters.in.graphql.user.mappers.UserRequest
 import com.drtx.example.realchatapp.core.models.User;
 import com.drtx.example.realchatapp.core.ports.in.UserUseCasePort;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -21,13 +22,13 @@ public class UserController {
     private final UserRequestMapper userRequestMapper;
 
     @MutationMapping
-    public UserResponse createUser(@Argument("input") UserRequest userRequest) {
+    public UserResponse createUser(@Argument("input") @Valid UserRequest userRequest) {
         User user = userRequestMapper.toDomain(userRequest);
         return userRequestMapper.toResponse(userUseCasePort.create(user));
     }
 
     @MutationMapping
-    public UserResponse updateUser(@Argument Long id, @Argument("input") UserRequest userRequest) {
+    public UserResponse updateUser(@Argument Long id, @Argument("input") @Valid UserRequest userRequest) {
         User user = userRequestMapper.toDomain(userRequest);
         return userRequestMapper.toResponse(userUseCasePort.update(id, user));
     }
