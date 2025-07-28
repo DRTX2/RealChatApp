@@ -44,4 +44,93 @@ stompClient.subscribe('/queue/mensajes/usuario2', (mensaje) => {
     console.log("Nuevo mensaje:", JSON.parse(mensaje.body));
 });
 ```  
-```
+
+---
+
+# Real Chat Application Tasks
+
+## Backend Development
+- [x] Set up Spring Boot project structure
+- [x] Configure WebSocket handler
+- [x] Implement GraphQL exception handling
+
+### Authentication & Security
+- [ ] Implement user authentication
+  - [ ] Create user registration endpoint
+  - [ ] Add login functionality
+  - [ ] Set up JWT token authentication
+- [ ] Add WebSocket security configuration
+- [ ] Implement user session management
+
+### Chat Features
+- [ ] Message Management
+  - [ ] Create message domain model
+  - [ ] Implement message persistence
+  - [ ] Add message timestamps and read receipts
+- [ ] Chat Rooms
+  - [ ] Create chat room domain model
+  - [ ] Implement room creation and management
+  - [ ] Add room participants handling
+- [ ] Direct Messages
+  - [ ] Implement private messaging
+  - [ ] Add user-to-user chat functionality
+
+### GraphQL API
+- [ ] Define GraphQL Schema
+  - [ ] User type and queries/mutations
+  - [ ] Message type and queries/mutations
+  - [ ] Chat room type and queries/mutations
+- [ ] Implement Resolvers
+  - [ ] User resolver
+  - [ ] Message resolver
+  - [ ] Chat room resolver
+- [ ] Add Subscriptions
+  - [ ] New message notifications
+  - [ ] Online status updates
+  - [ ] Typing indicators
+
+## Database
+- [ ] Design database schema
+- [ ] Set up entity relationships
+- [ ] Implement repositories
+- [ ] Add database migrations
+
+## Testing
+- [ ] Unit Tests
+  - [ ] WebSocket handler tests
+  - [ ] GraphQL resolver tests
+  - [ ] Service layer tests
+- [ ] Integration Tests
+  - [ ] WebSocket connection tests
+  - [ ] Authentication flow tests
+  - [ ] Message flow tests
+
+## Frontend Development
+- [ ] Set up frontend project
+- [ ] Implement UI Components
+  - [ ] Login/Registration forms
+  - [ ] Chat interface
+  - [ ] User list
+  - [ ] Room list
+- [ ] Add Real-time Features
+  - [ ] WebSocket connection
+  - [ ] Message updates
+  - [ ] Typing indicators
+  - [ ] Online status
+- [ ] Style and Polish
+  - [ ] Responsive design
+  - [ ] Theme implementation
+  - [ ] Loading states
+  - [ ] Error handling
+
+## Documentation
+- [ ] API documentation
+- [ ] Setup instructions
+- [ ] User guide
+- [ ] Developer documentation
+
+## Deployment
+- [ ] Configure production environment
+- [ ] Set up CI/CD pipeline
+- [ ] Deploy application
+- [ ] Monitor and maintain
