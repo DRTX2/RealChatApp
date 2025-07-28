@@ -1,4 +1,4 @@
-package com.drtx.example.realchatapp.adapters.in.rest.user.dto;
+package com.drtx.example.realchatapp.adapters.in.graphql.user.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
