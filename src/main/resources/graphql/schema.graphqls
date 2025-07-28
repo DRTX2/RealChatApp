@@ -1,0 +1,24 @@
+type Query{
+    findUserById(id: ID!): UserResponse
+    findUserByUsername(username: String!): UserResponse
+    findAllUsers: [UserResponse]
+}
+
+type Mutation {
+    createUser(input: UserRequestInput!): UserResponse
+    updateUser(id: ID!, input: UserRequestInput!): UserResponse
+    deleteUser(id: ID!): Boolean
+}
+
+type UserResponse {
+    id: ID!
+    username: String!
+    email: String!
+    createdAt: String!
+    updatedAt: String!
+}
+
+input UserRequestInput {
+    username: String!
+    email: String!
+}
