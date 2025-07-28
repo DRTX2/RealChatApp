@@ -39,6 +39,7 @@ public class UserEntity {
     private OnlineStatus onlineStatus;
 
     private Instant lastSeen;
+
     private Instant createdAt;
 
     @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
