@@ -33,7 +33,9 @@ spring:
     user:
       name: admin
       password: admin123
-
+  graphql:
+    schema:
+      locations: classpath:/graphql/
 server:
   port: 8080
 
