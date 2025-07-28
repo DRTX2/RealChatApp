@@ -6,6 +6,9 @@ import com.drtx.example.realchatapp.core.ports.out.UserRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserUseCaseImpl implements UserUseCasePort {
@@ -17,8 +20,9 @@ public class UserUseCaseImpl implements UserUseCasePort {
     }
 
     @Override
-    public User update(User user) {
-        return userRepositoryPort.update(user);
+    public User update(Long id, User user) {
+        if(userRepositoryPort.findById(id).isEmpty())
+        return userRepositoryPort.update(id, user);
     }
 
     @Override
@@ -27,12 +31,17 @@ public class UserUseCaseImpl implements UserUseCasePort {
     }
 
     @Override
-    public User findById(Long id) {
+    public Optional<User> findById(Long id) {
         return userRepositoryPort.findById(id);
     }
 
     @Override
-    public User findByUsername(String username) {
+    public Optional<User> findByUsername(String username) {
         return userRepositoryPort.findByUsername(username);
+    }
+
+    @Override
+    public List<User> findAll(){
+        return userRepositoryPort.findAll();
     }
 }
