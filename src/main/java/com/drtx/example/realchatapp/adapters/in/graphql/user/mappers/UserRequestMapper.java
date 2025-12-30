@@ -8,5 +8,9 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface UserRequestMapper {
     User toDomain(UserRequest userRequest);
+
+    @org.mapstruct.Mapping(target = "userDescription", source = "description")
+    @org.mapstruct.Mapping(target = "userAvatar", source = "avatar")
+    @org.mapstruct.Mapping(target = "userEmail", source = "email")
     UserResponse toResponse(User user);
 }

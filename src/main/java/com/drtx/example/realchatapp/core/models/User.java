@@ -2,6 +2,7 @@ package com.drtx.example.realchatapp.core.models;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 public class User {
     private Long id;
@@ -9,13 +10,15 @@ public class User {
     private String password;
     private String email;
     private String avatar;
+    private Set<Role> roles;
     private String description;
     private OnlineStatus onlineStatus;
     private Instant lastSeen;
     private Instant createdAt;
     private List<Message> messages;
 
-    public User(String username, String password, String email, String avatar, String description, OnlineStatus onlineStatus, Instant lastSeen, Instant createdAt, List<Message> messages) {
+    public User(String username, String password, String email, String avatar, String description,
+            OnlineStatus onlineStatus, Instant lastSeen, Instant createdAt, List<Message> messages) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -24,7 +27,7 @@ public class User {
         this.onlineStatus = onlineStatus;
         this.lastSeen = lastSeen;
         this.createdAt = createdAt;
-        this.messages=messages;
+        this.messages = messages;
     }
 
     public Long getId() {
@@ -91,6 +94,14 @@ public class User {
         this.lastSeen = lastSeen;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     public Instant getCreatedAt() {
         return createdAt;
     }
@@ -98,9 +109,11 @@ public class User {
     public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
+
     public List<Message> getMessages() {
         return messages;
     }
+
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }

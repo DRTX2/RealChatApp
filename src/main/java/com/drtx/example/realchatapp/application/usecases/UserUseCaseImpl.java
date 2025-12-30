@@ -21,7 +21,9 @@ public class UserUseCaseImpl implements UserUseCasePort {
 
     @Override
     public User update(Long id, User user) {
-        if(userRepositoryPort.findById(id).isEmpty())
+        if (userRepositoryPort.findById(id).isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
         return userRepositoryPort.update(id, user);
     }
 
@@ -41,7 +43,7 @@ public class UserUseCaseImpl implements UserUseCasePort {
     }
 
     @Override
-    public List<User> findAll(){
+    public List<User> findAll() {
         return userRepositoryPort.findAll();
     }
 }

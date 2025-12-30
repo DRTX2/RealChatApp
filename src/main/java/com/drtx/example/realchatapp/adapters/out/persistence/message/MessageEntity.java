@@ -1,7 +1,6 @@
 package com.drtx.example.realchatapp.adapters.out.persistence.message;
 
 import com.drtx.example.realchatapp.adapters.out.persistence.user.UserEntity;
-import com.drtx.example.realchatapp.core.models.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,14 +35,18 @@ public class MessageEntity {
     Instant updatedAt;
 
     @Column(nullable = false)
-    boolean isRead=false;
+    @Builder.Default
+    boolean isRead = false;
 
     @Column(nullable = false)
-    boolean isDeleted=false;
+    @Builder.Default
+    boolean isDeleted = false;
 
     @Column(nullable = false)
-    boolean isEdited=false;
+    @Builder.Default
+    boolean isEdited = false;
 
     @Column(nullable = false)
-    boolean isPinned=false;
+    @Builder.Default
+    boolean isPinned = false;
 }

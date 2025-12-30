@@ -6,6 +6,10 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface UserEntityMapper {
+    @org.mapstruct.Mapping(target = "messages", ignore = true)
     User toDomain(UserEntity entity);
+
+    @org.mapstruct.Mapping(target = "sentMessages", ignore = true)
+    @org.mapstruct.Mapping(target = "receivedMessages", ignore = true)
     UserEntity toEntity(User user);
 }

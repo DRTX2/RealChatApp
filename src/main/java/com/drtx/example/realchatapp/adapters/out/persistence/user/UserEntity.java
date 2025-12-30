@@ -1,13 +1,13 @@
 package com.drtx.example.realchatapp.adapters.out.persistence.user;
 
 import com.drtx.example.realchatapp.adapters.out.persistence.message.MessageEntity;
-import com.drtx.example.realchatapp.core.models.Message;
 import com.drtx.example.realchatapp.core.models.OnlineStatus;
+import com.drtx.example.realchatapp.core.models.Role;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "app_users")
@@ -19,7 +19,7 @@ import java.util.List;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -30,9 +30,11 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    private String avatar="";
+    @Builder.Default
+    private String avatar = "";
 
-    private String description="";
+    @Builder.Default
+    private String description = "";
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -42,9 +44,20 @@ public class UserEntity {
 
     private Instant createdAt;
 
-    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MessageEntity> sendtMessages;
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<MessageEntity> sentMessages;
 
-    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<MessageEntity> receivedMessages;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Set<Role> roles;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = Instant.now();
+    }
 }
